@@ -3,4 +3,4 @@ let app = require('angular').module('app', [
 ])
 .run(($rootScope,CONST)=>{
 	$rootScope.CONST = CONST;
-})
+}) 
