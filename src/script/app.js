@@ -7,10 +7,10 @@ let app = angular.module('app', [
       .primaryPalette('blue')
       .accentPalette('blue-grey');
   })
-  .run(($rootScope, $mdSidenav, $log, $timeout, CONST) => {
+  .run(($rootScope, $mdSidenav, $log, $timeout, CONST,menu) => {
     $rootScope.CONST = CONST;
     $rootScope.toggleLeft = buildDelayedToggler('left');
-
+    $rootScope.menu = menu;
     /**
      * Build handler to open/close a SideNav; when animation finishes
      * report completion in console
