@@ -1,8 +1,8 @@
 var app = angular.module('app.Constant', []);
 
 app.constant('CONST', {
-    APP_NAME: 'Social Health Platform Monitor',
-    APP_NAME_SHORT: 'SHP-Monitor',
+    APP_NAME: 'Social Health Platform Develop Dashboard',
+    APP_NAME_SHORT: 'SHP Develop Dashboard',
     // AD_CONFIG: {
     //     TENANT_ID: 'microsoft.onmicrosoft.com',
     //     CLIENT_ID: '482514c8-43d4-4421-a58e-73771b9e9e4c'

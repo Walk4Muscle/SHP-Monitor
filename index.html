@@ -1,23 +1,58 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app" ng-cloak>
+
 <head>
-	<title>{{CONST.APP_NAME}}</title>
-	<base href="/" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-
-    <!-- JavaScript for: jQuery, angular, materialize, and angular-materialize. All of which are needed. -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
-    <script type="text/javascript" src="/node_modules/angular/angular.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.1/angular-materialize.min.js"></script>
-
+    <title>{{CONST.APP_NAME}}</title>
+    <base href="/" />
+    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="/public/style/style.css" />
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
 </head>
-<body>
-	<div id="main">
-        <!--<div ng-view></div>-->
-        <div ui-view></div>
-        <!--contain body-->
+
+<body layout="column">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" ng-click="toggleLeft()" hide-gt-md="" aria-label="Navbar">
+                <md-icon md-font-set="material-icons">menu</md-icon>
+            </md-button>
+            <h2 class="md-flex">{{CONST.APP_NAME}}</h2>
+        </div>
+    </md-toolbar>
+    <div layout="row" flex>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+            <!--<md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+      </md-toolbar>-->
+            <md-content layout-padding="" ng-controller="LeftCtrl">
+            </md-content>
+        </md-sidenav>
+        <md-content flex="" layout-padding="">
+            <div id="main" layout="column" layout-align="top center">
+                <!--<div ng-view></div>-->
+                <div ui-view></div>
+                <!--contain body-->
+            </div>
+            <div flex=""></div>
+        </md-content>
     </div>
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="/node_modules/angular-animate/angular-animate.js"></script>
+    <script src="/node_modules/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="/node_modules/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="/public/main.min.js"></script>
 </body>
-<script type="text/javascript" src="/public/main.min.js"></script>
+
 </html>
