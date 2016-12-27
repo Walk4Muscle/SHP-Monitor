@@ -1,3 +1,3 @@
 module.exports = function ($scope, CONST) {
-	$scope.message = CONST.APP_NAME;
+	$scope.menu = CONST.APP_NAME;
 }

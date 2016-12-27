@@ -5,7 +5,7 @@ module.exports = function ($mdUtil, $animateCss, $$rAF) {
     },
     templateUrl: 'public/templates/menu-toggle.tmpl.html',
     link: function($scope, $element) {
-      var controller = $element.parent().controller();
+      var controller = $element.parent().controller('mdContent').$scope;
 
       // Used for toggling the visibility of the accordion's content, after
       // all of the animations are completed. This prevents users from being

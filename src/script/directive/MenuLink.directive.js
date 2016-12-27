@@ -4,14 +4,16 @@ module.exports = function () {
         scope: {
             section: '='
         },
-        link: function (scope, e, a) {
-            var controller = $element.parent().controller();
+        link: (scope, e, a) => {
+            var controller = e.parent().controller('mdContent').$scope;
 
-            $scope.isSelected = function () {
-                return controller.isSelected($scope.section);
+            scope.isSelected = () => {
+                return controller.isSelected(scope.section);
             };
-
-            $scope.focusSection = function () {
+            scope.selectPage = () => {
+                return controller.selectPage(scope.section);
+            }
+            scope.focusSection = () => {
                 // set flag to be used later when
                 // $locationChangeSuccess calls openPage()
                 controller.autoFocusContent = true;

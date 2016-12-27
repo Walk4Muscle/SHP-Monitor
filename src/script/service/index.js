@@ -1,73 +1,89 @@
-var app = angular.module('app.Srv', []);
+let app = angular.module('app.Srv', []);
 
 app.factory('utilitySrv', require('./utilitySrv'));
 
-app.factory('menu', ($location, $rootScope) => {
-    var sections = [{
-        name: 'Getting Started',
-        state: 'home.gettingstarted',
+app.factory('menu', ($location, $rootScope, CONST) => {
+    let rawdata_section = (() => {
+        let pages = [];
+        for (let k in CONST.ALL_ENABLED_PLARFORMS) {
+            pages.push({
+                name: CONST.ALL_ENABLED_PLARFORMS[k],
+                state: k,
+                type: 'link'
+            })
+        }
+        return {
+            name: 'Forum RawData',
+            type: 'toggle',
+            pages: pages
+        }
+    })()
+    let services_section = {
+        name: 'Service API',
+        type: 'toggle',
+        pages: [{
+            name: 'Spike',
+            type: 'link',
+            state: 'ServiceApi.Spike'
+        }, {
+            name: 'Regoin',
+            type: 'link',
+            state: 'ServiceApi.Regoin'
+        }, {
+            name: 'Similar Words',
+            type: 'link',
+            state: 'ServiceApi.SW'
+        }, {
+            name: 'Sentiment140',
+            type: 'link',
+            state: 'ServiceApi.Sentiment'
+        }]
+    }
+    let admin_scetion = {
+        name: 'Admin Section',
         type: 'heading',
-        children: []
-    }];
+        children: [{
+            name: 'User Management',
+            type: 'link'
+        }, {
+            name: 'Service Account',
+            type: 'link'
+        }, {
+            name: 'Notication Settings',
+            type: 'link'
+        }, ]
+    }
 
-    sections[0].children.push({
-        name: 'Beers',
-        type: 'toggle',
-        pages: [{
-            name: 'IPAs',
-            type: 'link',
-            state: 'home.beers.ipas',
-            icon: 'fa fa-group'
-        }, {
-            name: 'Porters',
-            state: 'home.beers.porters',
-            type: 'link',
-            icon: 'fa fa-map-marker'
-        }, {
-            name: 'Wheat',
-            state: 'home.beers.wheat',
-            type: 'link',
-            icon: 'fa fa-plus'
-        }]
-    });
+    let sections = [{
+        name: 'Dashboard',
+        type:'heading',
+        children:[{
+            name:'Current Status',
+            type:'link',
+            state:'Rawdata.all'
+        },rawdata_section,services_section]
+    },admin_scetion];
 
-    sections.push({
-        name: 'Munchies',
-        type: 'toggle',
-        pages: [{
-            name: 'Cheetos',
-            type: 'link',
-            state: 'munchies.cheetos',
-            icon: 'fa fa-group'
-        }, {
-            name: 'Banana Chips',
-            state: 'munchies.bananachips',
-            type: 'link',
-            icon: 'fa fa-map-marker'
-        }, {
-            name: 'Donuts',
-            state: 'munchies.donuts',
-            type: 'link',
-            icon: 'fa fa-map-marker'
-        }]
-    });
-
-    var self;
+    let self;
 
     return self = {
         sections: sections,
 
-        toggleSelectSection: function (section) {
+        toggleSelectSection: (section) => {
             self.openedSection = (self.openedSection === section ? null : section);
         },
-        isSectionSelected: function (section) {
+        isSectionSelected: (section) => {
             return self.openedSection === section;
         },
 
-        selectPage: function (section, page) {
-            page && page.url && $location.path(page.url);
-            self.currentSection = section;
+        selectPage: (page) => {
+            // page && page.url && $location.path(page.url);
+            // self.currentSection = section;
             self.currentPage = page;
+        },
+
+        isPageSelected: (page) => {
+            return self.currentPage === page;
         }
     };
 

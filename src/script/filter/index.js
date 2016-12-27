@@ -1,5 +1,21 @@
 let app = angular.module('app.Filter', ['app.Srv']);
-
+app
+.filter('nospace', ()=> {
+  return (value)=> {
+    return (!value) ? '' : value.replace(/ /g, '');
+  };
+})
+.filter('humanizeDoc', function() {
+  return (doc) => {
+    if (!doc) return;
+    if (doc.type === 'directive') {
+      return doc.name.replace(/([A-Z])/g, function($1) {
+        return '-'+$1.toLowerCase();
+      });
+    }
+    return doc.label || doc.name;
+  };
+})
 // app.filter('percentage', ['$window', function ($window) {
 //     return function (input, decimals, notAbsolute, suffix) {
 //         let decimals = angular.isNumber(decimals) ? decimals : 3;
