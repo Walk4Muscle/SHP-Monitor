@@ -1,6 +1,9 @@
-module.exports = function ($scope, $timeout, CONST) {
+module.exports = function ($scope, $timeout, $mdToast, CONST) {
 	// fix files update
 	$scope.CONST = CONST.APP_NAME;
+
+
+	//first scetion 
 	let chart1 = echarts.init($('#echart1')[0], 'macarons');
 	var data1 = [];
 	var data2 = [];
@@ -104,4 +107,26 @@ module.exports = function ($scope, $timeout, CONST) {
 			]
 		}
 	}
+
+	// second section table
+	$scope.syncupjobtable = [{
+		platform: 'MSDN/TN',
+		status: 'Running',
+		lastupdatetime: '2016-12-28',
+		lastupdatestatus: 'success',
+		nextruntime: '2016-12-29'
+	},{
+		platform: 'Twitter',
+		status: 'Running',
+		lastupdatetime: '2016-12-28',
+		lastupdatestatus: 'success',
+		nextruntime: '2016-12-29'
+	},{
+		platform: 'SE',
+		status: 'Running',
+		lastupdatetime: '2016-12-28',
+		lastupdatestatus: 'success',
+		nextruntime: '2016-12-29'
+	}];
+	
 }

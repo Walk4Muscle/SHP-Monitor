@@ -5,9 +5,28 @@
         </div>
     </md-toolbar>
     <md-subheader md-colors="{background:'light-blue-50'}">Question Volume Sync Up Realtime monitor</md-subheader>
-    <md-content layout="column"  layout-align="space-around">
+    <md-content layout="column" layout-align="space-around">
         <div id="echart1" flex style="height:400px;width:100%"></div>
     </md-content>
     <md-subheader md-colors="{background:'lime-50'}">Sync Up Job Status</md-subheader>
+    <mdt-table mdt-row="{
+                      data: syncupjobtable,
+                      'column-keys': [
+                          'platform',
+                          'status',
+                          'lastupdatetime',
+                          'lastupdatestatus',
+                          'nextruntime'
+                      ]
+                      }">
+        <mdt-header-row>
+            <mdt-column align-rule="left" column-sort="true">Platform</mdt-column>
+            <mdt-column align-rule="right" column-sort="true">Status</mdt-column>
+            <mdt-column align-rule="right" column-sort="true">Last Update Time</mdt-column>
+            <mdt-column align-rule="right" column-sort="true">Last Update Status</mdt-column>
+            <mdt-column align-rule="right">Next Run Time</mdt-column>
+            <mdt-column align-rule="right">Details</mdt-column>
+        </mdt-header-row>
+    </mdt-table>
     <md-subheader md-colors="{background:'teal-50'}">Programmer Activity Status</md-subheader>
 </md-content>

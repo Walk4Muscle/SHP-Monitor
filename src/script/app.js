@@ -1,6 +1,6 @@
 let app = angular.module('app', [
     require('./controller'), require('./service'), require('./directive'), require('./filter'), require('./app.route.js'), require('./app.constant.js'),
-    'ngMaterial','ngAnimate'
+    'ngMaterial', 'ngAnimate', require('angular-sanitize'), require('md-data-table')
   ])
   .config(($mdThemingProvider) => {
     $mdThemingProvider.theme('default')
@@ -9,7 +9,7 @@ let app = angular.module('app', [
       //   'hue-1': '50'
       // });
   })
-  .run(($rootScope, $mdSidenav, $log, $timeout, CONST,menu) => {
+  .run(($rootScope, $mdSidenav, $log, $timeout, CONST, menu) => {
     $rootScope.CONST = CONST;
     $rootScope.toggleLeft = buildDelayedToggler('left');
     $rootScope.menu = menu;
