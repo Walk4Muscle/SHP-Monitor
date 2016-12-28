@@ -1,11 +1,13 @@
 let app = angular.module('app', [
     require('./controller'), require('./service'), require('./directive'), require('./filter'), require('./app.route.js'), require('./app.constant.js'),
-    'ngMaterial'
+    'ngMaterial','ngAnimate'
   ])
   .config(($mdThemingProvider) => {
     $mdThemingProvider.theme('default')
       .primaryPalette('blue')
-      .accentPalette('blue-grey');
+      // .accentPalette('blue-grey',{
+      //   'hue-1': '50'
+      // });
   })
   .run(($rootScope, $mdSidenav, $log, $timeout, CONST,menu) => {
     $rootScope.CONST = CONST;

@@ -1,8 +1,13 @@
-<!--<md-content flex layout="row">
-    <md-toolbar flex>
+<md-content>
+    <md-toolbar md-colors="{background:'indigo-100-0.54'}" md-whiteframe="2">
         <div class="md-toolbar-tools">
-            <h2 class="md-flex">{{menu.currentPage.name}}</h2>
+            <h2 class="md-flex md-title">{{menu.currentPage.name}}</h2>
         </div>
     </md-toolbar>
-</md-content>-->
-{{menu.currentPage.name}}
+    <md-subheader md-colors="{background:'light-blue-50'}">Question Volume Sync Up Realtime monitor</md-subheader>
+    <md-content layout="column"  layout-align="space-around">
+        <div id="echart1" flex style="height:400px;width:100%"></div>
+    </md-content>
+    <md-subheader md-colors="{background:'lime-50'}">Sync Up Job Status</md-subheader>
+    <md-subheader md-colors="{background:'teal-50'}">Programmer Activity Status</md-subheader>
+</md-content>
