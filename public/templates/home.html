@@ -8,17 +8,16 @@
     <md-content layout="column" layout-align="space-around">
         <div id="echart1" flex style="height:400px;width:100%"></div>
     </md-content>
-    <md-subheader md-colors="{background:'lime-50'}">Sync Up Job Status</md-subheader>
+    <md-subheader md-colors="{background:'cyan-50'}">Sync Up Job Status</md-subheader>
     <mdt-table mdt-row="{
-                      data: syncupjobtable,
+                      'data': syncupjobtable,
                       'column-keys': [
                           'platform',
                           'status',
                           'lastupdatetime',
                           'lastupdatestatus',
                           'nextruntime'
-                      ]
-                      }">
+                      ]}">
         <mdt-header-row>
             <mdt-column align-rule="left" column-sort="true">Platform</mdt-column>
             <mdt-column align-rule="right" column-sort="true">Status</mdt-column>
