@@ -1,4 +1,4 @@
-module.exports = function ($scope, $timeout, $mdToast, CONST) {
+module.exports = function ($scope, $timeout, NgTableParams, CONST) {
 	// fix files update
 	$scope.CONST = CONST.APP_NAME;
 
@@ -110,23 +110,32 @@ module.exports = function ($scope, $timeout, $mdToast, CONST) {
 
 	// second section table
 	$scope.syncupjobtable = [{
-		platform: 'MSDN/TN',
-		status: 'Running',
-		lastupdatetime: '2016-12-28',
-		lastupdatestatus: 'success',
-		nextruntime: '2016-12-29'
-	},{
-		platform: 'Twitter',
-		status: 'Running',
-		lastupdatetime: '2016-12-28',
-		lastupdatestatus: 'success',
-		nextruntime: '2016-12-29'
-	},{
-		platform: 'SE',
-		status: 'Running',
-		lastupdatetime: '2016-12-28',
-		lastupdatestatus: 'success',
-		nextruntime: '2016-12-29'
+		'platform': 'MSDN/TN',
+		'status': 'Running',
+		'lastupdatetime': '2016-12-28',
+		'lastupdatestatus': 'success',
+		'nextruntime': '2016-12-29'
+	}, {
+		'platform': 'Twitter',
+		'status': 'Running',
+		'lastupdatetime': '2016-12-28',
+		'lastupdatestatus': 'success',
+		'nextruntime': '2016-12-29'
+	}, {
+		'platform': 'SE',
+		'status': 'Running',
+		'lastupdatetime': '2016-12-28',
+		'lastupdatestatus': 'success',
+		'nextruntime': '2016-12-29'
 	}];
-	
+
+	$scope.tableParams = new NgTableParams({
+		// initial sort order
+		sorting: {
+			platform: "asc"
+		}
+	}, {
+		dataset: $scope.syncupjobtable
+	});
+
 }

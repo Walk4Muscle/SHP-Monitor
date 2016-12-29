@@ -9,23 +9,20 @@
         <div id="echart1" flex style="height:400px;width:100%"></div>
     </md-content>
     <md-subheader md-colors="{background:'cyan-50'}">Sync Up Job Status</md-subheader>
-    <mdt-table mdt-row="{
-                      'data': syncupjobtable,
-                      'column-keys': [
-                          'platform',
-                          'status',
-                          'lastupdatetime',
-                          'lastupdatestatus',
-                          'nextruntime'
-                      ]}">
-        <mdt-header-row>
-            <mdt-column align-rule="left" column-sort="true">Platform</mdt-column>
-            <mdt-column align-rule="right" column-sort="true">Status</mdt-column>
-            <mdt-column align-rule="right" column-sort="true">Last Update Time</mdt-column>
-            <mdt-column align-rule="right" column-sort="true">Last Update Status</mdt-column>
-            <mdt-column align-rule="right">Next Run Time</mdt-column>
-            <mdt-column align-rule="right">Details</mdt-column>
-        </mdt-header-row>
-    </mdt-table>
+    <md-content layout="row" layout-align="center">
+        <div flex-lg="10"></div>
+        <md-content flex="80">
+            <table ng-table="tableParams" class="table table-condensed table-bordered table-striped">
+                <tr ng-repeat="row in $data">
+                    <td data-title="'Platform'" sortable="'platform'">{{row.platform}}</td>
+                    <td data-title="'Status'" sortable="'status'">{{row.status}}</td>
+                    <td data-title="'Last Update Time'">{{row.lastupdatetime}}</td>
+                    <td data-title="'Last Update Status'">{{row.lastupdatestatus}}</td>
+                    <td data-title="'Next Run Time'">{{row.nextruntime}}</td>
+                </tr>
+            </table>
+        </md-content>
+        <div flex-lg="10"></div>
+    </md-content>
     <md-subheader md-colors="{background:'teal-50'}">Programmer Activity Status</md-subheader>
 </md-content>
